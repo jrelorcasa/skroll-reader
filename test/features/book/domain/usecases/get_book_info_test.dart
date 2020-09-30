@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
+import 'package:skroll/core/usecases/usecase.dart';
 import 'package:skroll/features/book/book.dart';
 import 'package:skroll/features/book/domain/usecases/get_book_info.dart';
 import 'package:skroll/features/book_page/domain/domain.dart';
@@ -23,7 +24,7 @@ void main() {
     // arrange
     when(mockBookRepository.getBookInfo()).thenAnswer((_) async => Right(tBook));
     // act
-    final result = await usecase.execute();
+    final result = await usecase(NoParams());
     // assert
     expect(result, Right(tBook));
     verify(mockBookRepository.getBookInfo());
